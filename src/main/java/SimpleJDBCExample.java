@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JDBCExample {
+public class SimpleJDBCExample {
 
     public static void main(String[] args) {
         // JDBC URL, username, and password of the MySQL database
@@ -12,21 +12,21 @@ public class JDBCExample {
         String user = "root";
         String password = "root";
 
-        // Establishing the connection
+        // 1. Establishing the connection
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
 
             System.out.println("Connected to the database!");
 
-            // Creating a statement
+            // 2. Creating a statement
             Statement statement = connection.createStatement();
 
-            // SQL query to retrieve data
+            // 3. SQL query to retrieve data
             String query = "SELECT * FROM customers";
 
-            // Executing the query
+            // 4. Executing the query
             ResultSet resultSet = statement.executeQuery(query);
 
-            // Displaying the results
+            // 5. Displaying the results
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customerid");
                 String customerName = resultSet.getString("customername");
